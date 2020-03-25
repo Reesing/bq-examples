@@ -6,12 +6,13 @@
 # Description:
 """
 from bq import *
+
 sql = '''
 SELECT TRADE_DAYS FROM WINDDF.ASHARECALENDAR
 WHERE S_INFO_EXCHMARKET = 'SSE' AND
 TRADE_DAYS BETWEEN 20190101 AND 20191231
 ORDER BY TRADE_DAYS ASC
 '''
-dates = get_wind_data_sql(sql)
+dates = get_data_sql(sql,to_csv=True,csv_name='output.csv')
 print(dates.head())
 
